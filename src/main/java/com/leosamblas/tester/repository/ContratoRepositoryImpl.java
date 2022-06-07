@@ -14,9 +14,12 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import com.leosamblas.tester.model.Contrato;
 import com.leosamblas.tester.model.Parcela;
 
+@Repository
 public class ContratoRepositoryImpl implements ContratoRepositoryCustom {
 
 	@PersistenceContext
@@ -39,7 +42,7 @@ public class ContratoRepositoryImpl implements ContratoRepositoryCustom {
 		}
 
 		TypedQuery<Contrato> typedQuery = manager.createQuery(query.select(contratoRoot).where(predicate));
-		// typedQuery.setHint("org.hibernate.cacheable", true);
+		//typedQuery.setHint("org.hibernate.cacheable", true);
 
 		return typedQuery.getResultList();
 	}
